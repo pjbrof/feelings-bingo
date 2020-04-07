@@ -1,0 +1,19 @@
+.box {
+  height: 200px;
+  width: 200px;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 2rem;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  color: #333;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+  }
+}
