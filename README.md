@@ -1,0 +1,3 @@
+- create game schema
+- on new game generate new document in DB
+- allow CRUD actions for gameplay

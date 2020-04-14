@@ -1,17 +1,16 @@
 import React from "react";
-import Grid from "../Grid/index";
+import Splash from "../Splash/index";
+// import Game from "../Game/index";
 
 import "./App.scss";
-
-import gridInfo from "../data/gridinfo.json";
 
 class App extends React.Component {
   render() {
     return (
-      <>
+      <div className="feelings-bingo">
         <h1>Feelings Bingo</h1>
-        <Grid gridInfo={gridInfo} />
-      </>
+        <Splash />
+      </div>
     );
   }
 }
