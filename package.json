@@ -2,10 +2,10 @@
   "name": "feelings-bingo",
   "version": "1.0.0",
   "description": "",
-  "main": "src/main.js",
+  "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "server": "nodemon src/main.js",
+    "server": "nodemon ./index.js",
     "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +17,8 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "css-loader": "^3.5.0",
     "dotenv": "^8.2.0",
     "html-webpack-plugin": "^4.0.4",
@@ -33,10 +35,20 @@
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "immutability-helper": "^3.0.2",
     "mongoose": "^5.9.9",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "shortid": "^2.2.15"
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-promise-middleware": "^6.1.2",
+    "redux-thunk": "^2.3.0",
+    "shortid": "^2.2.15",
+    "socket.io": "^2.3.0"
   }
 }

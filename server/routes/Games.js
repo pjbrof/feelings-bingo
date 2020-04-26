@@ -3,7 +3,23 @@ const router = express.Router();
 const shortid = require("shortid");
 const Game = require("../models/Game");
 
-router.get("/", async (req, res) => {
+/* const io = req.app.get('socketio');
+io.emit('hi!'); */
+
+const getGameId = async (req, res, next) => {
+  try {
+    const gamer = await Game.findOne({ gameId: req.params.gameId });
+    if (gamer == null) {
+      return res.status(404).json({ message: "No game found" });
+    }
+    res.gamer = gamer;
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+  next();
+};
+
+router.get("/games", async (req, res) => {
   try {
     const games = await Game.find();
     res.status(200).json(games);
@@ -12,7 +28,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:gameId", getGameId, async (req, res) => {
+router.get("/joingame/:gameId", getGameId, async (req, res) => {
   res.json(res.gamer);
 });
 
@@ -29,7 +45,7 @@ router.post("/newgame", async (req, res) => {
   }
 });
 
-router.patch("/:gameId", getGameId, async (req, res) => {
+/* router.patch("/:gameId", getGameId, async (req, res) => {
   res.gamer.counter = req.body.counter;
   res.gamer.player = req.body.player;
   try {
@@ -47,21 +63,6 @@ router.delete("/endgame/:gameId", getGameId, async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-});
-
-async function getGameId(req, res, next) {
-  let gamer;
-  try {
-    gamer = await Game.findOne({ gameId: req.params.gameId });
-    if (gamer == null) {
-      return res.status(404).json({ message: "No game found" });
-    }
-  } catch (err) {
-    return res.status(500).json({ message: err.message });
-  }
-
-  res.gamer = gamer;
-  next();
-}
+}); */
 
 module.exports = router;

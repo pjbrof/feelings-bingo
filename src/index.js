@@ -1,5 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import store from "./store";
+
+import SocketContext from "./context/socketContext";
+import io from "socket.io-client";
+
+const socket = io("http://localhost:3000");
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -24,6 +32,15 @@ library.add(
   faSadTear
 );
 
-import App from "./App/App";
+import App from "./components/App/App";
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(
+  <BrowserRouter>
+    <SocketContext.Provider value={socket}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </SocketContext.Provider>
+  </BrowserRouter>,
+  document.getElementById("app")
+);

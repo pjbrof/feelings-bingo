@@ -1,11 +1,12 @@
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-var path = require("path");
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "public"),
     filename: "bundle.js",
+    publicPath: "/",
   },
   resolve: {
     extensions: [".jsx", ".mjs", ".js", ".json"],
@@ -14,6 +15,7 @@ module.exports = {
     contentBase: path.join(__dirname, "public"),
     compress: true,
     port: 8000,
+    historyApiFallback: true,
   },
   module: {
     rules: [
