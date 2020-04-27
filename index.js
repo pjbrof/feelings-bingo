@@ -17,7 +17,7 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", () => console.log("Connected to MongoDB"));
 
-if (process.env.NODE_ENV == "production") {
+if (process.env.NODE_ENV !== "production") {
   app.set("trust proxy");
   io.set("origins", "http://localhost:8000");
 }
