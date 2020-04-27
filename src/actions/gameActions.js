@@ -4,7 +4,7 @@ const uri = `http://localhost:3000` || "";
 export const createGame = (history) => {
   return (dispatch) => {
     axios
-      .post(`${uri}/newgame`)
+      .post(`/newgame`)
       .then((res) => {
         history.push(`/${res.data.gameId}`);
         dispatch({
@@ -21,7 +21,7 @@ export const createGame = (history) => {
 export const joinGame = (pathname) => {
   return (dispatch) => {
     axios
-      .get(`${uri}/joingame${pathname}`)
+      .get(`/joingame${pathname}`)
       .then((res) => {
         dispatch({
           type: "JOIN_GAME_SUCCESS",

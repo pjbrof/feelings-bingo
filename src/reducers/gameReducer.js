@@ -1,4 +1,3 @@
-// import update from "immutability-helper";
 import gridInfo from "../sources/gridinfo.json";
 
 export default function reducer(
@@ -23,15 +22,6 @@ export default function reducer(
     case "CREATE_GAME_FAILED": {
       return { ...state, error: action.payload };
     }
-    /* case "UPDATE_MATRIX": {
-      return update(state, {
-        winMatrix: {
-          [action.payload.index]: {
-            $set: action.payload.state,
-          },
-        },
-      });
-    } */
     case "JOIN_GAME_SUCCESS": {
       return {
         ...state,

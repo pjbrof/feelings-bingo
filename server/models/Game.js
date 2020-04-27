@@ -8,8 +8,7 @@ const Game = new mongoose.Schema({
     default: [0, 0, 0, 0, 0, 0, 0, 0, 0],
   },
   date: { type: Date, required: true, default: Date.now },
-  counter: { type: Number, require: true, default: 0 },
-  player: { type: String, require: true, default: "" },
+  players: { type: Array, require: true, default: [] },
 });
 
 module.exports = mongoose.model("Game", Game);

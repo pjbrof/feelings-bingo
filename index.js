@@ -10,19 +10,22 @@ const port = process.env.PORT || 3000;
 
 const socketMongo = require("./server/routes/socketMongo");
 
-const mongoDB = "mongodb://127.0.0.1/feelingsbingo";
+const mongoDB = `${process.env.DB_HOST}${process.env.DB_NAME}`;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", () => console.log("Connected to MongoDB"));
 
-app.set("trust proxy");
+if (process.env.NODE_ENV == "production") {
+  app.set("trust proxy");
+  io.set("origins", "http://localhost:8000");
+}
+
 app.use(express.json());
 app.use(cors());
 app.use("/", express.static(path.join(__dirname, "public")));
 
-io.set("origins", "http://localhost:8000");
 io.on("connection", (socket) => {
   console.log("User Connected");
 
@@ -36,11 +39,9 @@ io.on("connection", (socket) => {
   });
 });
 
-// app.set("socketio", io);
-
 const gameRouter = require("./server/routes/Games");
 app.use("/", gameRouter);
 
 http.listen(port, () => {
-  console.log("Listening on port 3000");
+  console.log(`Listening on port ${port}`);
 });

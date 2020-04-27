@@ -3,9 +3,6 @@ const router = express.Router();
 const shortid = require("shortid");
 const Game = require("../models/Game");
 
-/* const io = req.app.get('socketio');
-io.emit('hi!'); */
-
 const getGameId = async (req, res, next) => {
   try {
     const gamer = await Game.findOne({ gameId: req.params.gameId });
@@ -45,17 +42,6 @@ router.post("/newgame", async (req, res) => {
   }
 });
 
-/* router.patch("/:gameId", getGameId, async (req, res) => {
-  res.gamer.counter = req.body.counter;
-  res.gamer.player = req.body.player;
-  try {
-    const gameUpdated = await res.gamer.save();
-    res.json(gameUpdated);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
-
 router.delete("/endgame/:gameId", getGameId, async (req, res) => {
   try {
     const gameToEnd = await Game.deleteOne({ gameId: req.params.gameId });
@@ -63,6 +49,15 @@ router.delete("/endgame/:gameId", getGameId, async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-}); */
+});
+
+router.delete("/purge", async (req, res) => {
+  try {
+    const purge = await Game.deleteMany({});
+    res.status(200).json(purge);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 module.exports = router;

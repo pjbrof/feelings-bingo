@@ -6,19 +6,13 @@ POST http://localhost:3000/newgame
 
 ###
 
-GET http://localhost:3000/joingame/alWyLtC5B
+GET http://localhost:3000/joingame/F-P5bdDnX
 
 
 ###
 
-DELETE http://localhost:3000/endgame/_t-IbnxgM
+DELETE http://localhost:3000/endgame/0GXAJ87No
 
 ###
 
-PATCH http://localhost:3000/6FZtKoIE0
-Content-Type: application/json
-
-{
-    "counter": 1,
-    "player": "Patrick"
-}
+DELETE http://localhost:3000/purge
