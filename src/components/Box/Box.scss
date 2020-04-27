@@ -1,9 +1,12 @@
+@import "../../styles/variables.scss";
+
 .box {
   height: 200px;
   width: 200px;
   border: 1px solid #ddd;
   display: flex;
   justify-content: center;
+  background-color: #fff;
   align-items: center;
   flex-direction: column;
   font-weight: 600;
@@ -29,6 +32,6 @@
   }
 
   &.active {
-    background-color: #77dd77;
+    background-color: $primary;
   }
 }

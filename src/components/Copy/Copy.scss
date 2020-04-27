@@ -1,0 +1,68 @@
+.copy {
+  .copy-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1.3rem;
+  }
+
+  .copy-modal {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .copy-inner {
+      background-color: #fff;
+      width: 40%;
+      padding: 30px;
+      height: 400px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+
+      .copy-x {
+        text-decoration: none;
+        color: #333;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 30px;
+      }
+
+      .copy-link {
+        background-color: #ddd;
+        padding: 10px;
+        margin: 40px 0;
+      }
+
+      .copy-icon {
+        padding-right: 15px;
+      }
+
+      .copied {
+        margin: 0 15px;
+        animation: fadeOut 2s ease-in-out forwards 1s;
+      }
+
+      form {
+        visibility: hidden;
+      }
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+}

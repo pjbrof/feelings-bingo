@@ -19,6 +19,7 @@ import {
   faGrimace,
   faSurprise,
   faSadTear,
+  faCopy,
 } from "@fortawesome/free-regular-svg-icons";
 
 library.add(
@@ -29,7 +30,8 @@ library.add(
   faFrownOpen,
   faGrimace,
   faSurprise,
-  faSadTear
+  faSadTear,
+  faCopy
 );
 
 import App from "./components/App/App";

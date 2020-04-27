@@ -1,14 +1,33 @@
+@import "../../styles/variables.scss";
+
 html,
 body,
 .feelings-bingo {
-  height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: "Open Sans", sans-serif;
   font-size: 18px;
+  background-color: $bg-color;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 60px;
+.feelings-bingo {
+  h1 {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  button {
+    background-color: $button-bg-color;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    border: 2px solid $button-border-color;
+    color: $button-font-color;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $button-bg-hover;
+      color: $button-font-hover;
+    }
+  }
 }

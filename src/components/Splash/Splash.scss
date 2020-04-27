@@ -1,20 +1,6 @@
 .splash {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  button {
-    border: 2px solid goldenrod;
-    padding: 1rem 2rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: goldenrod;
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-      background-color: goldenrod;
-      color: #fff;
-      cursor: pointer;
-    }
-  }
 }
