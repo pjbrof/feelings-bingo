@@ -1,47 +1,47 @@
 [
   {
     "id": 1,
-    "emotion": "Happy",
+    "emotion": "happy",
     "icon": "grin-beam"
   },
   {
     "id": 2,
-    "emotion": "Sad",
+    "emotion": "sad",
     "icon": "sad-tear"
   },
   {
     "id": 3,
-    "emotion": "Mad",
+    "emotion": "mad",
     "icon": "angry"
   },
   {
     "id": 4,
-    "emotion": "Jealous",
+    "emotion": "jealous",
     "icon": "meh"
   },
   {
     "id": 5,
-    "emotion": "Free Space",
+    "emotion": "free space",
     "icon": null
   },
   {
     "id": 6,
-    "emotion": "Surprised",
+    "emotion": "surprised",
     "icon": "surprise"
   },
   {
     "id": 7,
-    "emotion": "Ashamed",
+    "emotion": "ashamed",
     "icon": "flushed"
   },
   {
     "id": 8,
-    "emotion": "Worried",
+    "emotion": "worried",
     "icon": "frown-open"
   },
   {
     "id": 9,
-    "emotion": "Scared",
+    "emotion": "scared",
     "icon": "grimace"
   }
 ]

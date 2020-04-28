@@ -22,9 +22,18 @@ if (process.env.NODE_ENV !== "production") {
   io.set("origins", "http://localhost:8000");
 }
 
+io.set("origins", "*:*");
 app.use(express.json());
 app.use(cors());
 app.use("/", express.static(path.join(__dirname, "public")));
+
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "public/index.html"), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
 
 io.on("connection", (socket) => {
   console.log("User Connected");

@@ -7,7 +7,7 @@ import store from "./store";
 import SocketContext from "./context/socketContext";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:3000");
+const socket = io();
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {

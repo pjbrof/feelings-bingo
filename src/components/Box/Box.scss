@@ -31,7 +31,43 @@
     }
   }
 
-  &.active {
-    background-color: $primary;
+  span {
+    text-transform: capitalize;
+  }
+
+  &.happy {
+    background-color: #f9ce29;
+  }
+
+  &.sad {
+    background-color: #b1c4f5;
+  }
+
+  &.mad {
+    background-color: #ed5e3d;
+  }
+
+  &.jealous {
+    background-color: #4cc1a2;
+  }
+
+  &.surprised {
+    background-color: #b586c5;
+  }
+
+  &.ashamed {
+    background-color: #e99261;
+  }
+
+  &.worried {
+    background-color: #c9e0d2;
+  }
+
+  &.scared {
+    background-color: #2b2bd6;
+  }
+
+  &.free {
+    background-color: #b3b3b3;
   }
 }

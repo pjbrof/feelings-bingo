@@ -1,5 +1,5 @@
 export const isWinner = (matrix) => {
-  if (matrix.length) {
+  if (matrix) {
     const n = Math.sqrt(matrix.length);
 
     // row count

@@ -11,10 +11,18 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    if (window.location.pathname.length === 10) {
-      this.props.joinGame(window.location.pathname);
+    this.state = {
+      path: window.location.pathname,
+    };
+  }
+
+  componentWillMount() {
+    const { path } = this.state;
+    if (path.length === 10) {
+      this.props.joinGame(path);
     }
   }
+
   render() {
     return (
       <div className="feelings-bingo">
