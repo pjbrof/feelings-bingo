@@ -1,4 +1,4 @@
-GET http://localhost:3000/games
+GET http://localhost:3000/game/games
 
 ###
 
@@ -6,9 +6,7 @@ POST http://localhost:3000/newgame
 
 ###
 
-GET http://localhost:3000/joingame/F-P5bdDnX
-
-
+GET http://localhost:3000/game/joingame/UbOZra5a-
 ###
 
 DELETE http://localhost:3000/endgame/0GXAJ87No

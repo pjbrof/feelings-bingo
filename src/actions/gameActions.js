@@ -1,10 +1,14 @@
 import axios from "axios";
-const uri = `http://localhost:3000` || "";
+
+let uri = "";
+if (process.env.NODE_ENV !== "production") {
+  uri = "http://localhost:3000";
+}
 
 export const createGame = (history) => {
   return (dispatch) => {
     axios
-      .post(`/newgame`)
+      .post(`${uri}/game/newgame`)
       .then((res) => {
         history.push(`/${res.data.gameId}`);
         dispatch({
@@ -21,7 +25,7 @@ export const createGame = (history) => {
 export const joinGame = (pathname) => {
   return (dispatch) => {
     axios
-      .get(`/joingame${pathname}`)
+      .get(`${uri}/game/joingame${pathname}`)
       .then((res) => {
         dispatch({
           type: "JOIN_GAME_SUCCESS",
@@ -31,6 +35,13 @@ export const joinGame = (pathname) => {
       .catch((err) => {
         dispatch({ type: "JOIN_GAME_FAILED", payload: err });
       });
+  };
+};
+
+export const joinNewGame = (state) => {
+  return {
+    type: "JOINGAME",
+    payload: state,
   };
 };
 

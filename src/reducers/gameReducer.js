@@ -27,6 +27,7 @@ export default function reducer(
         ...state,
         gameId: action.payload.gameId,
         winMatrix: action.payload.winMatrix,
+        bingo: action.payload.bingo,
       };
     }
     case "JOIN_GAME_FAILED": {

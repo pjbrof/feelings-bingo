@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { createGame } from "../../actions/gameActions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import "./Splash.scss";
 
 const Splash = (props) => {
@@ -12,6 +14,17 @@ const Splash = (props) => {
 
   return (
     <div className="splash">
+      <div className="splash-icons">
+        <i>
+          <FontAwesomeIcon icon={["far", "surprise"]} />
+        </i>
+        <i>
+          <FontAwesomeIcon icon={["far", "grin-beam"]} />
+        </i>
+        <i>
+          <FontAwesomeIcon icon={["far", "grimace"]} />
+        </i>
+      </div>
       <button onClick={handleClick}>Start New Game</button>
     </div>
   );

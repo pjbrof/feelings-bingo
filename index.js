@@ -10,7 +10,15 @@ const port = process.env.PORT || 3000;
 
 const socketMongo = require("./server/routes/socketMongo");
 
-const mongoDB = `${process.env.DB_HOST}${process.env.DB_NAME}`;
+let dbEnv;
+if (process.env.NODE_ENV !== "production") {
+  dbEnv = `${process.env.DB_HOST_LOCAL}`;
+} else {
+  dbEnv = `${process.env.DB_HOST_PROD}`;
+}
+console.log("db env", dbEnv);
+const mongoDB = `${process.env.DB_HOST_PROD}/${process.env.DB_NAME}`;
+
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
@@ -27,7 +35,7 @@ app.use(express.json());
 app.use(cors());
 app.use("/", express.static(path.join(__dirname, "public")));
 
-app.get("/*", function (req, res) {
+app.get("/:gameId", (req, res) => {
   res.sendFile(path.join(__dirname, "public/index.html"), (err) => {
     if (err) {
       res.status(500).send(err);
@@ -35,11 +43,26 @@ app.get("/*", function (req, res) {
   });
 });
 
+const getPathName = (origin, referer) =>
+  referer.slice(origin.length + 1, referer.length);
+
 io.on("connection", (socket) => {
   console.log("User Connected");
 
+  // const pathName = getPathName(
+  //   socket.handshake.headers.origin,
+  //   socket.handshake.headers.referer
+  // );
+
+  // socket.on("joingame", () => {
+  //   socketMongo.joinGame(pathName);
+  // });
+
   socket.on("turn", (data) => {
-    socket.broadcast.emit("updateGame", { grid: data.winMatrix });
+    socket.broadcast.emit("updateGame", {
+      grid: data.winMatrix,
+      bingo: data.bingo,
+    });
     socketMongo.updateGame(data);
   });
 
@@ -49,7 +72,7 @@ io.on("connection", (socket) => {
 });
 
 const gameRouter = require("./server/routes/Games");
-app.use("/", gameRouter);
+app.use("/game", gameRouter);
 
 http.listen(port, () => {
   console.log(`Listening on port ${port}`);

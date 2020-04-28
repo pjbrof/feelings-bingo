@@ -34,10 +34,12 @@ export const isWinner = (matrix) => {
 
 /* Allows for any square using CSS property */
 export const gridTemplateColumns = (gridArray) => {
-  let autoString = "";
-  const square = Math.sqrt(gridArray.length);
-  for (let i = 1; i <= square; i += 1) {
-    autoString += "auto ";
+  if (gridArray) {
+    let autoString = "";
+    const square = Math.sqrt(gridArray.length);
+    for (let i = 1; i <= square; i += 1) {
+      autoString += "auto ";
+    }
+    return autoString;
   }
-  return autoString;
 };

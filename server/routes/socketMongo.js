@@ -12,9 +12,20 @@ const getGameId = async (id) => {
   }
 };
 
+const joinGame = async (gameId) => {
+  const gamer = await getGameId(gameId);
+  try {
+    const joinGame = await gamer.save();
+    return joinGame;
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
 const updateGame = async (data) => {
   const gamer = await getGameId(data.gameId);
   gamer.winMatrix = data.winMatrix;
+  gamer.bingo = data.bingo;
   try {
     const saveGame = await gamer.save();
     return saveGame;
@@ -25,5 +36,6 @@ const updateGame = async (data) => {
 
 module.exports = {
   getGameId,
+  joinGame,
   updateGame,
 };

@@ -23,22 +23,26 @@ const Grid = (props) => {
       }),
     ];
 
-    socketCtx.emit("turn", {
-      gameId: props.game.gameId,
-      winMatrix: newMatrix,
-    });
+    if (newMatrix.length > 0) {
+      socketCtx.emit("turn", {
+        gameId: props.game.gameId,
+        winMatrix: newMatrix,
+        bingo: isWinner(newMatrix) ? true : false,
+      });
 
-    props.updateMatrix({
-      gameId: props.game.gameId,
-      winMatrix: newMatrix,
-      bingo: isWinner(newMatrix) ? true : false,
-    });
+      props.updateMatrix({
+        gameId: props.game.gameId,
+        winMatrix: newMatrix,
+        bingo: isWinner(newMatrix) ? true : false,
+      });
+    }
   };
 
   useEffect(() => {
     socketCtx.on("updateGame", (data) => {
       props.updateMatrix({
         winMatrix: data.grid,
+        bingo: data.bingo,
       });
     });
   });
