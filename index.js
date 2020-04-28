@@ -16,8 +16,7 @@ if (process.env.NODE_ENV !== "production") {
 } else {
   dbEnv = `${process.env.DB_HOST_PROD}`;
 }
-console.log("db env", dbEnv);
-const mongoDB = `${process.env.DB_HOST_PROD}/${process.env.DB_NAME}`;
+const mongoDB = `${dbEnv}/${process.env.DB_NAME}`;
 
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 

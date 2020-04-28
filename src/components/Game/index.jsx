@@ -10,7 +10,7 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
 
-    if (this.props.game.winMatrix.length === 0) {
+    if (this.props.game.winMatrix.length <= 0) {
       this.props.joinGame(props.location.pathname);
     }
   }
