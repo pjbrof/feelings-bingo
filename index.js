@@ -30,6 +30,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 io.set("origins", "*:*");
+
 app.use(express.json());
 app.use(cors());
 app.use("/", express.static(path.join(__dirname, "public")));
@@ -42,23 +43,13 @@ app.get("/:gameId", (req, res) => {
   });
 });
 
-const getPathName = (origin, referer) =>
-  referer.slice(origin.length + 1, referer.length);
-
 io.on("connection", (socket) => {
   console.log("User Connected");
 
-  // const pathName = getPathName(
-  //   socket.handshake.headers.origin,
-  //   socket.handshake.headers.referer
-  // );
-
-  // socket.on("joingame", () => {
-  //   socketMongo.joinGame(pathName);
-  // });
+  app.set("socketio", socket);
 
   socket.on("turn", (data) => {
-    socket.broadcast.emit("updateGame", {
+    socket.to(data.gameId).emit("updateGame", {
       grid: data.winMatrix,
       bingo: data.bingo,
     });
