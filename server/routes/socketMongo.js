@@ -27,8 +27,7 @@ const updateGame = async (data) => {
   gamer.winMatrix = data.winMatrix;
   gamer.bingo = data.bingo;
   try {
-    const saveGame = await gamer.save();
-    return saveGame;
+    await gamer.save();
   } catch (err) {
     throw new Error(err);
   }

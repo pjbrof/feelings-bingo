@@ -50,6 +50,7 @@ io.on("connection", (socket) => {
 
   socket.on("turn", (data) => {
     socket.to(data.gameId).emit("updateGame", {
+      gameId: data.gameId,
       grid: data.winMatrix,
       bingo: data.bingo,
     });

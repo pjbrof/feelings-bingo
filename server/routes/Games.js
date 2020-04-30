@@ -30,7 +30,7 @@ router.get("/joingame/:gameId", getGameId, async (req, res) => {
 
   console.log("User joined a game", req.params.gameId);
   socket.join(req.params.gameId);
-  socket.to(req.params.gameId).broadcast.emit("join-game", req.params.gameId);
+  socket.to(req.params.gameId).emit("join-game", req.params.gameId);
 
   res.json(res.gamer);
 });
@@ -46,7 +46,7 @@ router.post("/newgame", async (req, res) => {
   try {
     console.log("User created a game");
     socket.join(UUID);
-    socket.to(UUID).broadcast.emit("new-game", UUID);
+    socket.to(UUID).emit("new-game", UUID);
 
     const newGame = await gameInfo.save();
     res.status(201).json(newGame);

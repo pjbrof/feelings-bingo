@@ -38,9 +38,11 @@ const Grid = (props) => {
     }
   };
 
+  /* Incoming Data from server Socket.io */
   useEffect(() => {
     socketCtx.on("updateGame", (data) => {
       props.updateMatrix({
+        gameId: data.gameId,
         winMatrix: data.grid,
         bingo: data.bingo,
       });

@@ -38,13 +38,6 @@ export const joinGame = (pathname) => {
   };
 };
 
-export const joinNewGame = (state) => {
-  return {
-    type: "JOINGAME",
-    payload: state,
-  };
-};
-
 export const updateMatrix = (state) => {
   return {
     type: "UPDATE_MATRIX",
