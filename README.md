@@ -21,3 +21,5 @@ Validate possible room overlap issue
 
 Scenarios
 Support for larger squares
+Iconography
+ServiceWorkers

@@ -1,16 +1,16 @@
-GET http://localhost:3000/game/games
+GET http://localhost:3000/api/v1/games
 
 ###
 
-POST http://localhost:3000/newgame
+POST http://localhost:3000/api/v1/newgame
 
 ###
 
-GET http://localhost:3000/game/joingame/UbOZra5a-
+GET http://localhost:3000/api/v1/joingame/UbOZra5a-
 ###
 
-DELETE http://localhost:3000/endgame/0GXAJ87No
+DELETE http://localhost:3000/api/v1/endgame/0GXAJ87No
 
 ###
 
-DELETE http://localhost:3000/purge
+DELETE http://localhost:3000/api/v1/purge

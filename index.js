@@ -33,9 +33,20 @@ io.set("origins", "*:*");
 
 app.use(express.json());
 app.use(cors());
-app.use("/", express.static(path.join(__dirname, "public")));
+app.use(
+  "/",
+  express.static(path.join(__dirname, "public"), { maxAge: 31536000 })
+);
 
-app.get("/:gameId", (req, res) => {
+app.get("/robots.txt", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/robots.txt"), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
+
+app.get("/game/:gameId", (req, res) => {
   res.sendFile(path.join(__dirname, "public/index.html"), (err) => {
     if (err) {
       res.status(500).send(err);
@@ -63,7 +74,7 @@ io.on("connection", (socket) => {
 });
 
 const gameRouter = require("./server/routes/Games");
-app.use("/game", gameRouter);
+app.use("/api/v1", gameRouter);
 
 http.listen(port, () => {
   console.log(`Listening on port ${port}`);

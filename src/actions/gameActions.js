@@ -8,9 +8,9 @@ if (process.env.NODE_ENV !== "production") {
 export const createGame = (history) => {
   return (dispatch) => {
     axios
-      .post(`${uri}/game/newgame`)
+      .post(`${uri}/api/v1/newgame`)
       .then((res) => {
-        history.push(`/${res.data.gameId}`);
+        history.push(`/game/${res.data.gameId}`);
         dispatch({
           type: "CREATE_GAME_SUCCESS",
           payload: res.data,
@@ -25,7 +25,7 @@ export const createGame = (history) => {
 export const joinGame = (pathname) => {
   return (dispatch) => {
     axios
-      .get(`${uri}/game/joingame${pathname}`)
+      .get(`${uri}/api/v1/joingame${pathname.substring(5)}`)
       .then((res) => {
         dispatch({
           type: "JOIN_GAME_SUCCESS",

@@ -21,9 +21,9 @@ const Copy = () => {
 
   return (
     <>
-      <div className="copy">
+      <nav className="copy">
         <button className="copy-button" onClick={openCopyModal}>
-          <h4>Invite</h4>
+          <h2>Invite</h2>
         </button>
         <div
           className="copy-modal"
@@ -48,7 +48,7 @@ const Copy = () => {
             <span className="copied">{copySuccess}</span>
           </div>
         </div>
-      </div>
+      </nav>
     </>
   );
 };

@@ -14,10 +14,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="feelings-bingo">
-        <h1>Feelings Bingo</h1>
+        <header>
+          <h1>Feelings Bingo</h1>
+        </header>
         <Route path="/" exact component={Splash} />
         <Switch>
-          <Route path="/:gameId" component={Game} />
+          <Route path="/game/:gameId" component={Game} />
         </Switch>
       </div>
     );
