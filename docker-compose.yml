@@ -27,7 +27,7 @@ services:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
     depends_on:
-      - app
+      - nodejs
     networks:
       - app-network
   certbot:
