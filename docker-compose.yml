@@ -6,15 +6,14 @@ services:
     build: .
     env_file:
       - ./.env
-    links:
-      - mongo
     networks:
       - app-network
   mongo:
     container_name: mongo
     image: mongo
-    ports:
-      - 27017:27017
+    restart: unless-stopped
+    networks:
+      - app-network
   webserver:
     image: nginx:mainline-alpine
     container_name: webserver
