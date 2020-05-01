@@ -16,13 +16,10 @@ const Splash = (props) => {
     <div className="splash">
       <div className="splash-icons">
         <i>
-          <FontAwesomeIcon icon={["far", "surprise"]} />
-        </i>
-        <i>
-          <FontAwesomeIcon icon={["far", "grin-beam"]} />
-        </i>
-        <i>
-          <FontAwesomeIcon icon={["far", "grimace"]} />
+          <FontAwesomeIcon
+            icon={["fas", "smile-beam"]}
+            style={{ color: "#ffeb01" }}
+          />
         </i>
       </div>
       <button onClick={handleClick}>Start New Game</button>

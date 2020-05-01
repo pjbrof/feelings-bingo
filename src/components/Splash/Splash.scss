@@ -6,8 +6,26 @@
     margin: 4rem;
 
     i {
-      padding: 0 2rem;
-      font-size: 6rem;
+      position: relative;
+      font-size: 8rem;
+      display: block;
+      z-index: 0;
+
+      &::before {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        top: 50%;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        display: inline-block;
+        background-color: black;
+        content: "";
+        width: 6rem;
+        height: 6rem;
+        z-index: -1;
+      }
     }
   }
 

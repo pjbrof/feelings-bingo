@@ -23,7 +23,7 @@ const Copy = () => {
     <>
       <nav className="copy">
         <button className="copy-button" onClick={openCopyModal}>
-          <h2>Invite</h2>
+          Invite
         </button>
         <div
           className="copy-modal"
@@ -47,6 +47,7 @@ const Copy = () => {
             </CopyToClipboard>
             <span className="copied">{copySuccess}</span>
           </div>
+          <div className="modal-bg" onClick={openCopyModal}></div>
         </div>
       </nav>
     </>

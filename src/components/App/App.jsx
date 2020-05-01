@@ -17,10 +17,12 @@ class App extends React.Component {
         <header>
           <h1>Feelings Bingo</h1>
         </header>
-        <Route path="/" exact component={Splash} />
-        <Switch>
-          <Route path="/game/:gameId" component={Game} />
-        </Switch>
+        <main>
+          <Route path="/" exact component={Splash} />
+          <Switch>
+            <Route path="/game/:gameId" component={Game} />
+          </Switch>
+        </main>
       </div>
     );
   }

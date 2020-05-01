@@ -1,31 +1,39 @@
+@import "../../styles/variables.scss";
+
 .copy {
   .copy-button {
     position: absolute;
     top: 0;
     right: 0;
     margin: 1.3rem;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    padding: 0;
+
+    @media (max-width: $mobile-breakpoint) {
+      top: unset;
+      bottom: 0;
+    }
   }
 
   .copy-modal {
     display: none;
-    background-color: rgba(0, 0, 0, 0.4);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
 
     .copy-inner {
       background-color: #fff;
-      width: 40%;
       padding: 30px;
-      height: 400px;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       left: 0;
       right: 0;
-      margin: 0 auto;
+      margin: 0 20%;
+      z-index: 3;
+
+      @media (max-width: $mobile-breakpoint) {
+        margin: 0 5%;
+      }
 
       .copy-x {
         text-decoration: none;
@@ -40,6 +48,7 @@
         background-color: #ddd;
         padding: 10px;
         margin: 40px 0;
+        word-break: break-all;
       }
 
       .copy-icon {
@@ -54,6 +63,17 @@
       form {
         visibility: hidden;
       }
+    }
+
+    .modal-bg {
+      background-color: rgba(0, 0, 0, 0.4);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      cursor: pointer;
     }
   }
 

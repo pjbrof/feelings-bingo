@@ -1,5 +1,11 @@
+@import "../../styles/variables.scss";
+
 .grid {
   display: grid;
   justify-content: center;
-  grid-gap: 15px;
+  grid-gap: 1.389rem;
+
+  @media (max-width: $mobile-breakpoint) {
+    grid-gap: 1rem;
+  }
 }

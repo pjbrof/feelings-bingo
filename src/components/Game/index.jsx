@@ -18,10 +18,10 @@ class Game extends React.Component {
   render() {
     return (
       <>
-        <main className="game">
+        <div className="game">
           <Copy />
           {this.props.game.winMatrix.length > 0 && <Grid />}
-        </main>
+        </div>
       </>
     );
   }

@@ -27,6 +27,8 @@ import {
   faCopy,
 } from "@fortawesome/free-regular-svg-icons";
 
+import { faSmileBeam } from "@fortawesome/free-solid-svg-icons";
+
 library.add(
   faGrinBeam,
   faAngry,
@@ -35,6 +37,7 @@ library.add(
   faFrownOpen,
   faGrimace,
   faSurprise,
+  faSmileBeam,
   faSadTear,
   faCopy
 );
