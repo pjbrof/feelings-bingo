@@ -1,6 +1,6 @@
 version: "3"
 services:
-  app:
+  nodejs:
     container_name: feelingsbingo
     restart: unless-stopped
     build: .
