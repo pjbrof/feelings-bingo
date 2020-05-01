@@ -21,11 +21,13 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - web-root:/var/www/html
       - ./nginx-conf:/etc/nginx/conf.d
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
+      - dhparam:/etc/ssl/certs
     depends_on:
       - nodejs
     networks:
@@ -39,7 +41,7 @@ services:
       - web-root:/var/www/html
     depends_on:
       - webserver
-    command: certonly --webroot --webroot-path=/var/www/html --email pjbrof@gmail.com --agree-tos --no-eff-email --staging -d feelingsbingo.com  -d www.feelingsbingo.com
+    command: certonly --webroot --webroot-path=/var/www/html --email pjbrof@gmail.com --agree-tos --no-eff-email --force-renewal -d feelingsbingo.com  -d www.feelingsbingo.com
 volumes:
   certbot-etc:
   certbot-var:
@@ -48,6 +50,12 @@ volumes:
     driver_opts:
       type: none
       device: /home/node/feelings-bingo/public/
+      o: bind
+  dhparam:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/node/feelings-bingo/dhparam
       o: bind
 networks:
   app-network:
