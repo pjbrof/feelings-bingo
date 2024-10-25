@@ -2,7 +2,7 @@ import axios from "axios";
 
 let uri = "";
 if (process.env.NODE_ENV !== "production") {
-  uri = "http://localhost:3000";
+  uri = "http://localhost:3002";
 }
 
 export const createGame = (history) => {

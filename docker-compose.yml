@@ -1,9 +1,12 @@
 version: "3"
+
 services:
   nodejs:
     container_name: feelingsbingo
     restart: unless-stopped
-    build: .
+    build: ./server/
+    ports:
+      - "3002:3002"
     env_file:
       - ./.env
     networks:
@@ -14,47 +17,12 @@ services:
     restart: unless-stopped
     networks:
       - app-network
-  webserver:
-    image: nginx:mainline-alpine
-    container_name: webserver
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - web-root:/var/www/html
-      - ./nginx-conf:/etc/nginx/conf.d
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-      - dhparam:/etc/ssl/certs
-    depends_on:
-      - nodejs
-    networks:
-      - app-network
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-      - web-root:/var/www/html
-    depends_on:
-      - webserver
-    command: certonly --webroot --webroot-path=/var/www/html --email pjbrof@gmail.com --agree-tos --no-eff-email --force-renewal -d feelingsbingo.com  -d www.feelingsbingo.com
 volumes:
-  certbot-etc:
-  certbot-var:
   web-root:
     driver: local
     driver_opts:
       type: none
-      device: /home/node/feelings-bingo/public/
-      o: bind
-  dhparam:
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/node/feelings-bingo/dhparam
+      device: /home/patrick/feelings-bingo/
       o: bind
 networks:
   app-network:

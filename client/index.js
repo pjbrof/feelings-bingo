@@ -1,18 +1,11 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "./store";
-
+import App from "./components/App/App";
 import SocketContext from "./context/socketContext";
-import io from "socket.io-client";
-
-let server = "";
-if (process.env.NODE_ENV !== "production") {
-  server = "http://localhost:3000";
-}
-
-const socket = io(server);
+const { io } = require("socket.io-client");
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -42,15 +35,21 @@ library.add(
   faCopy
 );
 
-import App from "./components/App/App";
+let server = "";
+if (process.env.NODE_ENV !== "production") {
+  server = "http://localhost:3002";
+}
 
-ReactDOM.render(
+const socket = io(server);
+
+const root = createRoot(document.getElementById("app"));
+
+root.render(
   <BrowserRouter>
     <SocketContext.Provider value={socket}>
       <Provider store={store}>
         <App />
       </Provider>
     </SocketContext.Provider>
-  </BrowserRouter>,
-  document.getElementById("app")
+  </BrowserRouter>
 );

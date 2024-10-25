@@ -1,14 +1,21 @@
-require("dotenv").config();
+require("dotenv").config({ path: "../.env" });
 const path = require("path");
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const http = require("http").createServer(app);
-const io = require("socket.io")(http);
+const { createServer } = require("http");
+const { Server } = require("socket.io");
 const cors = require("cors");
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3002;
 
-const socketMongo = require("./server/routes/socketMongo");
+const http = createServer();
+const io = new Server(http, {
+  cors: {
+    origin: "http://localhost:8000",
+  },
+});
+
+const socketMongo = require("./routes/socketMongo");
 
 let dbEnv;
 if (process.env.NODE_ENV !== "production") {
@@ -26,10 +33,15 @@ db.once("open", () => console.log("Connected to MongoDB"));
 
 if (process.env.NODE_ENV !== "production") {
   app.set("trust proxy");
-  io.set("origins", "http://localhost:8000");
+  io.use((socket, next) => {
+    const handshakeData = socket.request;
+    // make sure the handshake data looks good as before
+    // if error do this:
+    // next(new Error("not authorized"));
+    // else just call next
+    next();
+  });
 }
-
-io.set("origins", "*:*");
 
 app.use(express.json());
 app.use(cors());
@@ -73,7 +85,7 @@ io.on("connection", (socket) => {
   });
 });
 
-const gameRouter = require("./server/routes/Games");
+const gameRouter = require("./routes/Games");
 app.use("/api/v1", gameRouter);
 
 http.listen(port, () => {
